@@ -135,3 +135,35 @@ git branch -D newcarservice
 ```
 ```
 git push origin --delete newcarservice
+```
+### Kubernetes
+
+Start Docker
+
+Start Kubernetes minikube:
+```
+minikube start --cpus=2 --memory=5000 --driver=docker
+```
+
+Launch the deployment:
+```
+kubectl apply -f deployment.yml  
+```
+
+Notice the image used at line 23. You should use your onw image from the Docker Hub
+
+Chek is the pods is running:
+```
+kubectl get pods
+```
+
+Get the URL of the service:
+```
+minikube service rentalService --url  
+```
+
+Test in a browser
+```
+http://127.0.0.1:51300/cars  
+```
+Take care at the address
