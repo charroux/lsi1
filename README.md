@@ -168,6 +168,39 @@ http://127.0.0.1:51300/cars
 ```
 Take care at the address
 
+
+### Install Istio
+https://istio.io/latest/docs/setup/getting-started/
+
+Download Istio (take care at the version 1.17 here).
+
+```
+cd istio-1.17.0    
+export PATH=$PWD/bin:$PATH    
+istioctl install --set profile=demo -y
+cd ..   
+```
+Enable auto-injection of the Istio side-cars when the pods are started:
+```
+kubectl label namespace default istio-injection=enabled
+```
+Install the Istio addons (Kiali, Prometheus, Jaeger, Grafana):
+```
+kubectl apply -f samples/addons
+```
+## 
+Enable auto-injection of the Istio side-cars when the pods are started:
+```
+kubectl label namespace default istio-injection=enabled
+```
+
+Configure Docker so that it uses the Kubernetes cluster:
+```
+minikube docker-env
+eval $(minikube -p minikube docker-env)
+eval $(minikube docker-env)  
+```
+
 ### Kubernetes Gateway
 
 Check the configuration at 54: https://github.com/charroux/lsi1/blob/main/deployment.yml
