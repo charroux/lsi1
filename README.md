@@ -167,3 +167,17 @@ Test in a browser
 http://127.0.0.1:51300/cars  
 ```
 Take care at the address
+
+### Kubernetes Gateway
+
+Check the configuration at 54: https://github.com/charroux/lsi1/blob/main/deployment.yml
+
+Check also where the Kubernetes service is registered in the gataway at line 72.
+
+Then get the address of the gateway:
+```
+kubectl -n istio-system port-forward deployment/istio-ingressgateway 31380:8080  
+```
+
+and finally test in your browser:
+http://localhost:31380/rentalservice/cars
