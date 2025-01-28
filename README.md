@@ -138,12 +138,40 @@ git push origin --delete newcarservice
 ```
 ### Kubernetes
 
-Start Docker
+Start Docker Desktop
+
+Use Minikube or Kubernetes via docker
+
+Minikube installation: https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
 
 Start Kubernetes minikube:
 ```
 minikube start --cpus=2 --memory=5000 --driver=docker
 ```
+
+### Deploy via command
+```
+kubectl create deployment rentalservice --image=charroux/rentalservice:1
+```
+
+Change the image from the Docker Hub.
+
+Add a service:
+```
+kubeclt expose deployment rentalservice --type=LoadBalancer   ```
+```
+Get the URL of the service:
+```
+minikube service rentalService --url  
+```
+
+Test in a browser
+```
+http://127.0.0.1:51300/cars  
+```
+Take care at the address
+
+### Deploy via a yalm file
 
 Launch the deployment:
 ```
